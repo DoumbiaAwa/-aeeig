@@ -21,7 +21,7 @@ export default function Nav() {
 
         {/* Nav Item - Dashboard */}
         <li className="nav-item active">
-          <Link className="nav-link" to="/dashboard">
+          <Link className="nav-link" to="/">
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </Link>
@@ -39,12 +39,12 @@ export default function Nav() {
         </li>
 
         {/* Nav Item - Semestres */}
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" to="/semetres">
             <i className="fas fa-fw fa-folder"></i>
             <span>Semestres</span>
           </Link>
-        </li>
+        </li> */}
 
         {/* Nav Item - Etudiants */}
         <li className="nav-item">
