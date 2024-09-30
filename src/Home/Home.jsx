@@ -3,16 +3,16 @@ import './Home.css'
 export default function Home() {
   return (
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-    <div  style={{ marginTop: '-45%', width: '80%', marginLeft:'17%' }}>
+<div  style={{ marginTop: '-45%', width: '80%', marginLeft:'17%' }}>
     
     
 
     {/* <!-- Page Heading --> */}
     <div className="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                className="fas fa-download fa-sm text-white-50"></i>Deconnexion</a>
-    </div>
+        <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+               Deconnexion</a>
+     </div>
 
     {/* <!-- Content Row --> */}
     <div className="row">

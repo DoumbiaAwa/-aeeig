@@ -9,12 +9,18 @@ import Semestres from './Semestres/Semestres';
 import Etudiants from './Etudiants/Etudiants';
 import Notes from './Notes/Notes';
 import Details from './Details/Details';
+import Login from './Login/Login';
 function App() {
   return (
     <Router>
       <Routes>
-        
+            
       <Route path="/" element={
+       <>
+    <Login />
+    </>
+} />
+      <Route path="/home" element={
        <>
     <Nav />
     <Home />
@@ -49,7 +55,7 @@ function App() {
     </>
 } />
 
-<Route path="/detail" element={
+<Route path="/detail/:id" element={
        <>
       <Nav />
     <Details />
