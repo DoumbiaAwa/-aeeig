@@ -1,7 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseConf';
+import { useNavigate } from 'react-router-dom';
 import './Login.css'
+
+
 export default function Login() {
+ const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Authentifier avec Firebase
+      await signInWithEmailAndPassword(auth, email, password);
+      // Rediriger vers la page admin après succès
+      navigate('/home');
+    } catch (err) {
+      setError('Email ou mot de passe incorrect');
+    }
+  };
   return (
     <div className="container">
 
@@ -22,15 +43,24 @@ export default function Login() {
                                     <div className="text-center">
                                         <h1 className="titre">Association des Étudiants Ivoiriens en Guinée</h1>
                                     </div>
-                                    <form className="user">
+                                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                                    <form className="user" onSubmit={handleLogin}>
                                         <div className="form-group">
                                             <input type="email" className="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..."/>
+                                                placeholder="Enter Email Address..."
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                                
+                                                />
                                         </div>
                                         <div className="form-group">
                                             <input type="password" className="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password"/>
+                                                id="exampleInputPassword" placeholder="Password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                required/>
                                         </div>
                                         <div className="form-group">
                                             {/* <div className="custom-control custom-checkbox small">
@@ -39,11 +69,13 @@ export default function Login() {
                                                     Me</label>
                                             </div> */}
                                         </div>
-                                        <Link to='/home'>
-                                        <a href="index.html" className="btn btn-primary btn-user btn-block">
+                                        {/* <Link to='/home'> */}
+                                        <button type='submit'  className="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
-                                        </Link>
+
+                                        </button>
+                                        
+                                        {/* </Link> */}
                                        
                                         <hr/>
                                       
